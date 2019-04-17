@@ -1,0 +1,246 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!-- navbar -->
+<div class="navebar">
+    <nav class="navbar navbar-expand-lg navbar-default bg-default">
+        <div class="container">
+            <a class="navbar-brand nav_font_color" href="{% url 'home' %}">My Albame</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link nav_font_color" href="#photos">Photo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav_font_color" href="#services">Service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav_font_color" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav_font_color" href="#about">About</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav login_part">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a href="{%  url 'logout' %}">LogOut</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a href="{%  url 'login' %}"><i class="fa fa-sign-in"></i>LOGIN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{%  url 'registers' %}"><i class="fas fa-user-plus"></i>REGISTER</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</div>
+
+<!-- //navbar ....................................................................... -->
+<!-- Photo -->
+<section class="container photo_carb" id="photos">
+
+    <div class="row">
+        {% for portrait in portraits %}
+            <div class="col sm12 ">
+                <div class="photo_img">
+                    <a href="{{ portrait.img.url }}" data-lightbox="mygallery"><img src="{{ portrait.img.url }}" alt="" class="responsive-img materialboxed"></a>
+                </div>
+            </div>
+            <div class="col sm12">
+                <div class="photo_text">
+                    <h2><a href="{% url 'detail' slug=portrait.slug %}"target="_blank">{{ portrait.title }}</a></h2>
+                    <p>{{ portrait.textfild }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+        {% for cityseape in cityseapes %}
+            <div class="col sm12">
+                <div class="photo_text2">
+                    <h2 class=""><a href="">{{ cityseape.title }}</a></h2>
+                    <p>{{ cityseape.textfild }}</p>
+                </div>
+            </div>
+            <div class="col sm12 ">
+                <div class="photo_img">
+                    <a href="{{ cityseape.img.url }}" data-lightbox="mygallery"><img src="{{ cityseape.img.url }}" alt="" class="responsive-img materialboxed"></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+    <div class="row">
+        {% for natures in nature %}
+            <div class="row">
+                <div class="col sm12 ">
+                    <div class="photo_img">
+                        <a href="{{ natures.img.url }} " data-lightbox="mygallery"><img src="{{ natures.img.url }} " alt="" class="responsive-img materialboxed"></a>
+                    </div>
+                </div>
+                <div class="col sm12">
+                    <div class="photo_text">
+                        <h2 class="">{{ natures.title }}</h2>
+                        <p>{{ natures.textfild }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+<!-- //photo ....................................................................... -->
+  <!-- parallax -->
+<section>
+    <div class="parallax_first">
+
+    </div>
+    <div class="mid_text">
+        <div class="container">
+            <h2>Future Platforms </h2>
+        <p>In this example we have turned off parallax scrolling for mobile devices. It works as expected on all desktop screens sizes Scroll Up and Down this page to see the parallax scrolling effect.In this example we have turned off parallax scrolling for mobile devices. It works as expected on all desktop screens sizes.
+            Scroll Up and Down this page to see the parallax scrolling effect.In this example we have turned off parallax scrolling for mobile devices. It works as expected on all desktop screens sizes.
+            Scroll Up and Down this page to see the parallax scrolling effect.In this example we have turned off parallax scrolling for mobile devices. It works as expected on all desktop screens sizes.
+            Scroll Up and Down this page to see the parallax scrolling effect.In this example we have turned off parallax scrolling for mobile devices. It works as expected on all desktop screens sizes
+                Scroll Up and Down this page to see the parallax scrolling effect.</p>
+        </div>
+    </div>
+
+    <div class="parallax_second">
+
+    </div>
+    <div class="mid_text">
+        <section class="section container" id="services">
+            <div class="row">
+                <div class="col sm-12">
+                    <h2 >How I Am .. ! </h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue, suscipit elit nec, tincidunt orci.</p>
+                    <p>Mauris dolor augue, vulputate in pharetra ac, facilisis nec libero. Fusce condimentum gravida urna, vitae scelerisque erat ornare nec.</p>
+                </div>
+                <div class="col sm-12">
+                <!-- Nav tabs -->
+                    <div class="container mt-3">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#menu1">Menu 1</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
+                            </li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div id="home" class="container tab-pane active"><br>
+                                <h3>HOME</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                            <div id="menu1" class="container tab-pane fade"><br>
+                                <h3>Menu 1</h3>
+                                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            </div>
+                            <div id="menu2" class="container tab-pane fade"><br>
+                                <h3>Menu 2</h3>
+                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</section>
+<!-- //parallax ................................................................... -->
+  <!-- contact form -->
+<section class=" section original_form_content" id="contact">
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="text_content">
+                    <h2>Get in Tuch</h2>
+                    <p>We were both young when I first saw you I close my eyes and the flashback starts I'm standing there on a balcony in summer air
+                        See the lights, see the party, the ball gowns See you make your way through the crowd And say hello
+                    </p>
+                </div>
+            </div>
+            <!-- message box -->
+            <div class="col-sm-6">
+                <div class="box">
+                    <!-- Alert Messages . -->
+                    {% include 'second/_alerts.html' %}
+                    <form  method="POST">
+                        {% csrf_token %}
+                        <div class="">
+                            <input type="text" name="" required="">
+                            <label>Your Name </label>
+                        </div>
+                        <div class="">
+                            <input type="email" name="" required="">
+                            <label>Your Email </label>
+                        </div>
+                        <div class="">
+                            <input type="text" name="" required="">
+                            <label>Your Subject </label>
+                        </div>
+                        <div class="">
+                            <textarea required="" ></textarea>
+                            <label>Your Messages </label>
+                        </div>
+                        <input type="submit" name="" value="Submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- //contact form -->
+<!-- footer -->
+<footer>
+
+    <div class="footers" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col sm-12">
+                    <div class="footer_text">
+                        <h2>About Me</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus congue, suscipit elit nec, tincidunt orci.</p>
+                    </div>
+                </div>
+                <div class="col sm-12">
+                    <div class="footer_contuct">
+                        <h2 class="white-text">Connect</h2>
+                        <div class="footer_icon">
+                            <ul>
+                                <li><a href=""><i class="fa fa-facebook fa-2x"></i></a></li>
+                                <li><a href=""><i class="fa fa-linkedin fa-2x"></i></a></li>
+                                <li><a href=""><i class="fa fa-twitter fa-2x"></i></a></li>
+                                <li><a href=""><i class="fa fa-whatsapp fa-2x"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=footer_next>
+        <p>© 2019 OTF </p>
+    </div>
+</footer>
+<!-- //footer -->
+
+{% endblock %}
